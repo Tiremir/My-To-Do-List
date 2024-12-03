@@ -1,0 +1,10 @@
+^C:\USERS\ILUXA_3OXWD82\DEV\PROJECTS\MY_TO_DO_LIST\BUILD\WINDOWS\X64\CMAKEFILES\40DE4C53A156731724550F685BEE078D\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/iluxa_3oxwd82/dev/Projects/my_to_do_list/windows -BC:/Users/iluxa_3oxwd82/dev/Projects/my_to_do_list/build/windows/x64 --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/iluxa_3oxwd82/dev/Projects/my_to_do_list/build/windows/x64/my_to_do_list.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

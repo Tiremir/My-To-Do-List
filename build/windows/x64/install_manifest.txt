@@ -1,0 +1,9 @@
+C:/Users/iluxa_3oxwd82/dev/Projects/my_to_do_list/build/windows/x64/runner/Debug/data/icudtl.dat
+C:/Users/iluxa_3oxwd82/dev/Projects/my_to_do_list/build/windows/x64/runner/Debug/flutter_windows.dll
+C:/Users/iluxa_3oxwd82/dev/Projects/my_to_do_list/build/windows/x64/runner/Debug/data/flutter_assets/AssetManifest.bin
+C:/Users/iluxa_3oxwd82/dev/Projects/my_to_do_list/build/windows/x64/runner/Debug/data/flutter_assets/AssetManifest.json
+C:/Users/iluxa_3oxwd82/dev/Projects/my_to_do_list/build/windows/x64/runner/Debug/data/flutter_assets/FontManifest.json
+C:/Users/iluxa_3oxwd82/dev/Projects/my_to_do_list/build/windows/x64/runner/Debug/data/flutter_assets/fonts/MaterialIcons-Regular.otf
+C:/Users/iluxa_3oxwd82/dev/Projects/my_to_do_list/build/windows/x64/runner/Debug/data/flutter_assets/kernel_blob.bin
+C:/Users/iluxa_3oxwd82/dev/Projects/my_to_do_list/build/windows/x64/runner/Debug/data/flutter_assets/NOTICES.Z
+C:/Users/iluxa_3oxwd82/dev/Projects/my_to_do_list/build/windows/x64/runner/Debug/data/flutter_assets/shaders/ink_sparkle.frag
