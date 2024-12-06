@@ -21,8 +21,16 @@ class MainApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+
+  List<String> _list = ["Apple", "Ball", "Cat", "Dog", "Elephant"];
 
   @override
   Widget build(BuildContext context) {
@@ -35,46 +43,44 @@ class MyHomePage extends StatelessWidget {
         child: ListView(
           children: const [
             ListTile(
-              title: Text('Задача 1'),
+              title: Text('Элемент'),
             ),
             ListTile(
-              title: Text('Задача 1'),
+              title: Text('Элемент'),
             ),
             ListTile(
-              title: Text('Задача 1'),
+              title: Text('Элемент'),
             ),
           ],
         )
       ),
       body: Center(
-        child: ListView(
-          children: const [
-            ListTile(
-              title: Text('Задача 1'),
-            ),
-            ListTile(
-              title: Text('Задача 1'),
-            ),
-            ListTile(
-              title: Text('Задача 1'),
-            ),
-            ListTile(
-              title: Text('Задача 1'),
-            ),
-            ListTile(
-              title: Text('Задача 1'),
-            ),
-            ListTile(
-              title: Text('Задача 1'),
-            ),
-            ListTile(
-              title: Text('Задача 1'),
-            ),
-            ListTile(
-              title: Text('Задача 1'),
-            ),
-          ],
-        )
+        child: ReorderableListView(
+        children: _list.map((item) => ListTile(key: Key("${item}"), title: Text("${item}"), trailing: Icon(Icons.menu),)).toList(),
+        onReorder: (int start, int current) {
+          // dragging from top to bottom
+          if (start < current) {
+            int end = current - 1;
+            String startItem = _list[start];
+            int i = 0;
+            int local = start;
+            do {
+              _list[local] = _list[++local];
+              i++;
+            } while (i < end - start);
+            _list[end] = startItem;
+          }
+          // dragging from bottom to top
+          else if (start > current) {
+            String startItem = _list[start];
+            for (int i = start; i > current; i--) {
+              _list[i] = _list[i - 1];
+            }
+            _list[current] = startItem;
+          }
+          setState(() {});
+        },
+        ),
       ),
     );
   }
