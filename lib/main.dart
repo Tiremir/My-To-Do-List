@@ -30,7 +30,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-  List<String> _list = ["Apple", "Ball", "Cat", "Dog", "Elephant"];
+  final List<String> _list = ["Apple", "Ball", "Cat", "Dog", "Elephant"];
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: ReorderableListView(
-        children: _list.map((item) => ListTile(key: Key("${item}"), title: Text("${item}"), trailing: Icon(Icons.menu),)).toList(),
+        children: _list.map((item) => ListTile(key: Key(item), title: Text(item))).toList(),
         onReorder: (int start, int current) {
           // dragging from top to bottom
           if (start < current) {
@@ -82,6 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
         },
         ),
       ),
+      floatingActionButton: const FloatingActionButton(onPressed: null),
     );
   }
 }
