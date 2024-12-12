@@ -30,7 +30,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-  final List<String> _list = ["Apple", "Ball", "Cat", "Dog", "Elephant"];
+  final List<String> _items = ['Apple', 'Ball', 'Cat', 'Dog', 'Elephant'];
 
   @override
   Widget build(BuildContext context) {
@@ -56,33 +56,24 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: ReorderableListView(
-        children: _list.map((item) => ListTile(key: Key(item), title: Text(item))).toList(),
-        onReorder: (int start, int current) {
-          // dragging from top to bottom
-          if (start < current) {
-            int end = current - 1;
-            String startItem = _list[start];
-            int i = 0;
-            int local = start;
-            do {
-              _list[local] = _list[++local];
-              i++;
-            } while (i < end - start);
-            _list[end] = startItem;
+          children: _items.asMap().entries.map((entry) {
+            return ListTile(
+              key: Key(entry.key.toString()),
+              title: Text(entry.value),
+            );
+          }).toList(),
+          onReorder: (int oldIndex, int newIndex) {
+            setState(() {
+              if (oldIndex < newIndex) {
+                newIndex -= 1;
+              }
+              final String item = _items.removeAt(oldIndex);
+              _items.insert(newIndex, item);
+            });
           }
-          // dragging from bottom to top
-          else if (start > current) {
-            String startItem = _list[start];
-            for (int i = start; i > current; i--) {
-              _list[i] = _list[i - 1];
-            }
-            _list[current] = startItem;
-          }
-          setState(() {});
-        },
-        ),
+        )
       ),
-      floatingActionButton: const FloatingActionButton(onPressed: null),
+      floatingActionButton: FloatingActionButton(onPressed: () => setState(() {_items.add('Задача');}), child: const Icon(Icons.add)),
     );
   }
 }
