@@ -18,7 +18,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{8AF462C4-52EE-3143-BA0F-54166ED9931B}</ProjectGuid>
+    <ProjectGuid>{506B06BC-F389-3645-B267-EB8FE85FEC06}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
     <Platform>x64</Platform>
@@ -50,19 +50,19 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\build\windows\x64\runner\Debug\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\proto\dev\Projects\My-To-Do-List\build\windows\x64\runner\Debug\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">my_to_do_list.dir\Debug\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">my_to_do_list</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\build\windows\x64\runner\Profile\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">C:\Users\proto\dev\Projects\My-To-Do-List\build\windows\x64\runner\Profile\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">my_to_do_list.dir\Profile\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">my_to_do_list</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\build\windows\x64\runner\Release\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\proto\dev\Projects\My-To-Do-List\build\windows\x64\runner\Release\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">my_to_do_list.dir\Release\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">my_to_do_list</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
@@ -71,7 +71,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\windows;C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\windows\flutter\ephemeral;C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\windows\flutter\ephemeral\cpp_client_wrapper\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\proto\dev\Projects\My-To-Do-List\windows;C:\Users\proto\dev\Projects\My-To-Do-List\windows\flutter\ephemeral;C:\Users\proto\dev\Projects\My-To-Do-List\windows\flutter\ephemeral\cpp_client_wrapper\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -92,10 +92,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;_HAS_EXCEPTIONS=0;FLUTTER_VERSION=\"0.1.0\";FLUTTER_VERSION_MAJOR=0;FLUTTER_VERSION_MINOR=1;FLUTTER_VERSION_PATCH=0;FLUTTER_VERSION_BUILD=0;NOMINMAX;UNICODE;_UNICODE;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\windows;C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\windows\flutter\ephemeral;C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\windows\flutter\ephemeral\cpp_client_wrapper\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\proto\dev\Projects\My-To-Do-List\windows;C:\Users\proto\dev\Projects\My-To-Do-List\windows\flutter\ephemeral;C:\Users\proto\dev\Projects\My-To-Do-List\windows\flutter\ephemeral\cpp_client_wrapper\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\windows;C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\windows\flutter\ephemeral;C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\windows\flutter\ephemeral\cpp_client_wrapper\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\proto\dev\Projects\My-To-Do-List\windows;C:\Users\proto\dev\Projects\My-To-Do-List\windows\flutter\ephemeral;C:\Users\proto\dev\Projects\My-To-Do-List\windows\flutter\ephemeral\cpp_client_wrapper\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -103,25 +103,25 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\flutter\Debug\flutter_wrapper_app.lib;dwmapi.lib;C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\windows\flutter\ephemeral\flutter_windows.dll.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\flutter\Debug\flutter_wrapper_app.lib;dwmapi.lib;C:\Users\proto\dev\Projects\My-To-Do-List\windows\flutter\ephemeral\flutter_windows.dll.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/Users/iluxa_3oxwd82/dev/Projects/my_to_do_list/build/windows/x64/runner/Debug/my_to_do_list.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/Users/iluxa_3oxwd82/dev/Projects/my_to_do_list/build/windows/x64/runner/Debug/my_to_do_list.pdb</ProgramDataBaseFile>
+      <ImportLibrary>C:/Users/proto/dev/Projects/My-To-Do-List/build/windows/x64/runner/Debug/my_to_do_list.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/proto/dev/Projects/My-To-Do-List/build/windows/x64/runner/Debug/my_to_do_list.pdb</ProgramDataBaseFile>
       <SubSystem>Windows</SubSystem>
     </Link>
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
     </ProjectReference>
     <Manifest>
-      <AdditionalManifestFiles>C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\windows\runner\runner.exe.manifest;</AdditionalManifestFiles>
+      <AdditionalManifestFiles>C:\Users\proto\dev\Projects\My-To-Do-List\windows\runner\runner.exe.manifest;</AdditionalManifestFiles>
     </Manifest>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\windows;C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\windows\flutter\ephemeral;C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\windows\flutter\ephemeral\cpp_client_wrapper\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\proto\dev\Projects\My-To-Do-List\windows;C:\Users\proto\dev\Projects\My-To-Do-List\windows\flutter\ephemeral;C:\Users\proto\dev\Projects\My-To-Do-List\windows\flutter\ephemeral\cpp_client_wrapper\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <DisableSpecificWarnings>"4100"</DisableSpecificWarnings>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -142,10 +142,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_HAS_EXCEPTIONS=0;FLUTTER_VERSION=\"0.1.0\";FLUTTER_VERSION_MAJOR=0;FLUTTER_VERSION_MINOR=1;FLUTTER_VERSION_PATCH=0;FLUTTER_VERSION_BUILD=0;NOMINMAX;UNICODE;_UNICODE;CMAKE_INTDIR=\"Profile\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\windows;C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\windows\flutter\ephemeral;C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\windows\flutter\ephemeral\cpp_client_wrapper\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\proto\dev\Projects\My-To-Do-List\windows;C:\Users\proto\dev\Projects\My-To-Do-List\windows\flutter\ephemeral;C:\Users\proto\dev\Projects\My-To-Do-List\windows\flutter\ephemeral\cpp_client_wrapper\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\windows;C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\windows\flutter\ephemeral;C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\windows\flutter\ephemeral\cpp_client_wrapper\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\proto\dev\Projects\My-To-Do-List\windows;C:\Users\proto\dev\Projects\My-To-Do-List\windows\flutter\ephemeral;C:\Users\proto\dev\Projects\My-To-Do-List\windows\flutter\ephemeral\cpp_client_wrapper\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -153,25 +153,25 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\flutter\Profile\flutter_wrapper_app.lib;dwmapi.lib;C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\windows\flutter\ephemeral\flutter_windows.dll.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\flutter\Profile\flutter_wrapper_app.lib;dwmapi.lib;C:\Users\proto\dev\Projects\My-To-Do-List\windows\flutter\ephemeral\flutter_windows.dll.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/Users/iluxa_3oxwd82/dev/Projects/my_to_do_list/build/windows/x64/runner/Profile/my_to_do_list.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/Users/iluxa_3oxwd82/dev/Projects/my_to_do_list/build/windows/x64/runner/Profile/my_to_do_list.pdb</ProgramDataBaseFile>
+      <ImportLibrary>C:/Users/proto/dev/Projects/My-To-Do-List/build/windows/x64/runner/Profile/my_to_do_list.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/proto/dev/Projects/My-To-Do-List/build/windows/x64/runner/Profile/my_to_do_list.pdb</ProgramDataBaseFile>
       <SubSystem>Windows</SubSystem>
     </Link>
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
     </ProjectReference>
     <Manifest>
-      <AdditionalManifestFiles>C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\windows\runner\runner.exe.manifest;</AdditionalManifestFiles>
+      <AdditionalManifestFiles>C:\Users\proto\dev\Projects\My-To-Do-List\windows\runner\runner.exe.manifest;</AdditionalManifestFiles>
     </Manifest>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\windows;C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\windows\flutter\ephemeral;C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\windows\flutter\ephemeral\cpp_client_wrapper\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\proto\dev\Projects\My-To-Do-List\windows;C:\Users\proto\dev\Projects\My-To-Do-List\windows\flutter\ephemeral;C:\Users\proto\dev\Projects\My-To-Do-List\windows\flutter\ephemeral\cpp_client_wrapper\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <DisableSpecificWarnings>"4100"</DisableSpecificWarnings>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -192,10 +192,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_HAS_EXCEPTIONS=0;FLUTTER_VERSION=\"0.1.0\";FLUTTER_VERSION_MAJOR=0;FLUTTER_VERSION_MINOR=1;FLUTTER_VERSION_PATCH=0;FLUTTER_VERSION_BUILD=0;NOMINMAX;UNICODE;_UNICODE;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\windows;C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\windows\flutter\ephemeral;C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\windows\flutter\ephemeral\cpp_client_wrapper\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\proto\dev\Projects\My-To-Do-List\windows;C:\Users\proto\dev\Projects\My-To-Do-List\windows\flutter\ephemeral;C:\Users\proto\dev\Projects\My-To-Do-List\windows\flutter\ephemeral\cpp_client_wrapper\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\windows;C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\windows\flutter\ephemeral;C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\windows\flutter\ephemeral\cpp_client_wrapper\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\proto\dev\Projects\My-To-Do-List\windows;C:\Users\proto\dev\Projects\My-To-Do-List\windows\flutter\ephemeral;C:\Users\proto\dev\Projects\My-To-Do-List\windows\flutter\ephemeral\cpp_client_wrapper\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -203,28 +203,28 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\flutter\Release\flutter_wrapper_app.lib;dwmapi.lib;C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\windows\flutter\ephemeral\flutter_windows.dll.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\flutter\Release\flutter_wrapper_app.lib;dwmapi.lib;C:\Users\proto\dev\Projects\My-To-Do-List\windows\flutter\ephemeral\flutter_windows.dll.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/Users/iluxa_3oxwd82/dev/Projects/my_to_do_list/build/windows/x64/runner/Release/my_to_do_list.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/Users/iluxa_3oxwd82/dev/Projects/my_to_do_list/build/windows/x64/runner/Release/my_to_do_list.pdb</ProgramDataBaseFile>
+      <ImportLibrary>C:/Users/proto/dev/Projects/My-To-Do-List/build/windows/x64/runner/Release/my_to_do_list.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/proto/dev/Projects/My-To-Do-List/build/windows/x64/runner/Release/my_to_do_list.pdb</ProgramDataBaseFile>
       <SubSystem>Windows</SubSystem>
     </Link>
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
     </ProjectReference>
     <Manifest>
-      <AdditionalManifestFiles>C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\windows\runner\runner.exe.manifest;</AdditionalManifestFiles>
+      <AdditionalManifestFiles>C:\Users\proto\dev\Projects\My-To-Do-List\windows\runner\runner.exe.manifest;</AdditionalManifestFiles>
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\windows\runner\CMakeLists.txt">
+    <CustomBuild Include="C:\Users\proto\dev\Projects\My-To-Do-List\windows\runner\CMakeLists.txt">
       <UseUtf8Encoding>Always</UseUtf8Encoding>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/iluxa_3oxwd82/dev/Projects/my_to_do_list/windows/runner/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/proto/dev/Projects/My-To-Do-List/windows/runner/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/iluxa_3oxwd82/dev/Projects/my_to_do_list/windows -BC:/Users/iluxa_3oxwd82/dev/Projects/my_to_do_list/build/windows/x64 --check-stamp-file C:/Users/iluxa_3oxwd82/dev/Projects/my_to_do_list/build/windows/x64/runner/CMakeFiles/generate.stamp
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/proto/dev/Projects/My-To-Do-List/windows -BC:/Users/proto/dev/Projects/My-To-Do-List/build/windows/x64 --check-stamp-file C:/Users/proto/dev/Projects/My-To-Do-List/build/windows/x64/runner/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -233,11 +233,11 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\build\windows\x64\runner\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\proto\dev\Projects\My-To-Do-List\build\windows\x64\runner\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">Building Custom Rule C:/Users/iluxa_3oxwd82/dev/Projects/my_to_do_list/windows/runner/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">Building Custom Rule C:/Users/proto/dev/Projects/My-To-Do-List/windows/runner/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">setlocal
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/iluxa_3oxwd82/dev/Projects/my_to_do_list/windows -BC:/Users/iluxa_3oxwd82/dev/Projects/my_to_do_list/build/windows/x64 --check-stamp-file C:/Users/iluxa_3oxwd82/dev/Projects/my_to_do_list/build/windows/x64/runner/CMakeFiles/generate.stamp
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/proto/dev/Projects/My-To-Do-List/windows -BC:/Users/proto/dev/Projects/My-To-Do-List/build/windows/x64 --check-stamp-file C:/Users/proto/dev/Projects/My-To-Do-List/build/windows/x64/runner/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -246,11 +246,11 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\build\windows\x64\runner\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">C:\Users\proto\dev\Projects\My-To-Do-List\build\windows\x64\runner\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/iluxa_3oxwd82/dev/Projects/my_to_do_list/windows/runner/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/proto/dev/Projects/My-To-Do-List/windows/runner/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/iluxa_3oxwd82/dev/Projects/my_to_do_list/windows -BC:/Users/iluxa_3oxwd82/dev/Projects/my_to_do_list/build/windows/x64 --check-stamp-file C:/Users/iluxa_3oxwd82/dev/Projects/my_to_do_list/build/windows/x64/runner/CMakeFiles/generate.stamp
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/proto/dev/Projects/My-To-Do-List/windows -BC:/Users/proto/dev/Projects/My-To-Do-List/build/windows/x64 --check-stamp-file C:/Users/proto/dev/Projects/My-To-Do-List/build/windows/x64/runner/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -259,33 +259,33 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\build\windows\x64\runner\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\proto\dev\Projects\My-To-Do-List\build\windows\x64\runner\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\windows\runner\flutter_window.cpp" />
-    <ClCompile Include="C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\windows\runner\main.cpp" />
-    <ClCompile Include="C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\windows\runner\utils.cpp" />
-    <ClCompile Include="C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\windows\runner\win32_window.cpp" />
-    <ClCompile Include="C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\windows\flutter\generated_plugin_registrant.cc" />
-    <ResourceCompile Include="C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\windows\runner\Runner.rc" />
+    <ClCompile Include="C:\Users\proto\dev\Projects\My-To-Do-List\windows\runner\flutter_window.cpp" />
+    <ClCompile Include="C:\Users\proto\dev\Projects\My-To-Do-List\windows\runner\main.cpp" />
+    <ClCompile Include="C:\Users\proto\dev\Projects\My-To-Do-List\windows\runner\utils.cpp" />
+    <ClCompile Include="C:\Users\proto\dev\Projects\My-To-Do-List\windows\runner\win32_window.cpp" />
+    <ClCompile Include="C:\Users\proto\dev\Projects\My-To-Do-List\windows\flutter\generated_plugin_registrant.cc" />
+    <ResourceCompile Include="C:\Users\proto\dev\Projects\My-To-Do-List\windows\runner\Runner.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\build\windows\x64\ZERO_CHECK.vcxproj">
-      <Project>{77967E00-11A1-3DAE-A6F0-CFF631402D2C}</Project>
+    <ProjectReference Include="C:\Users\proto\dev\Projects\My-To-Do-List\build\windows\x64\ZERO_CHECK.vcxproj">
+      <Project>{E86B67E1-46C8-3E9D-9FB3-0369A0B1E058}</Project>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\build\windows\x64\flutter\flutter_assemble.vcxproj">
-      <Project>{03BE69A1-FE67-3D80-A82E-3AD7BA01BBC6}</Project>
+    <ProjectReference Include="C:\Users\proto\dev\Projects\My-To-Do-List\build\windows\x64\flutter\flutter_assemble.vcxproj">
+      <Project>{F5B26C4A-CB0C-31CA-B405-89DC601D3EF7}</Project>
       <Name>flutter_assemble</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\build\windows\x64\flutter\flutter_wrapper_app.vcxproj">
-      <Project>{83204825-0785-3084-9843-E20E7803483B}</Project>
+    <ProjectReference Include="C:\Users\proto\dev\Projects\My-To-Do-List\build\windows\x64\flutter\flutter_wrapper_app.vcxproj">
+      <Project>{433D5AF0-54E4-3AEA-93A5-F469A7825C1C}</Project>
       <Name>flutter_wrapper_app</Name>
     </ProjectReference>
   </ItemGroup>

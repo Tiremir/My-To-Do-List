@@ -1,6 +1,6 @@
-^C:\USERS\ILUXA_3OXWD82\DEV\PROJECTS\MY_TO_DO_LIST\BUILD\WINDOWS\X64\CMAKEFILES\6F3E305B20AF9BF3C2AFC17C007DCD5E\FLUTTER_WINDOWS.DLL.RULE
+^C:\USERS\PROTO\DEV\PROJECTS\MY-TO-DO-LIST\BUILD\WINDOWS\X64\CMAKEFILES\624A51E0C5BF30FF0221E008753ECFDA\FLUTTER_WINDOWS.DLL.RULE
 setlocal
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E env FLUTTER_ROOT=C:\Users\iluxa_3oxwd82\flutter PROJECT_DIR=C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list FLUTTER_ROOT=C:\Users\iluxa_3oxwd82\flutter FLUTTER_EPHEMERAL_DIR=C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\windows\flutter\ephemeral PROJECT_DIR=C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list FLUTTER_TARGET=C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\lib\main.dart DART_OBFUSCATION=false TRACK_WIDGET_CREATION=true TREE_SHAKE_ICONS=false PACKAGE_CONFIG=C:\Users\iluxa_3oxwd82\dev\Projects\my_to_do_list\.dart_tool\package_config.json C:/Users/iluxa_3oxwd82/flutter/packages/flutter_tools/bin/tool_backend.bat windows-x64 Debug
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E env FLUTTER_ROOT=C:\Users\proto\flutter PROJECT_DIR=C:\Users\proto\dev\Projects\My-To-Do-List FLUTTER_ROOT=C:\Users\proto\flutter FLUTTER_EPHEMERAL_DIR=C:\Users\proto\dev\Projects\My-To-Do-List\windows\flutter\ephemeral PROJECT_DIR=C:\Users\proto\dev\Projects\My-To-Do-List FLUTTER_TARGET=C:\Users\proto\dev\Projects\My-To-Do-List\lib\main.dart DART_OBFUSCATION=false TRACK_WIDGET_CREATION=true TREE_SHAKE_ICONS=false PACKAGE_CONFIG=C:\Users\proto\dev\Projects\My-To-Do-List\.dart_tool\package_config.json C:/Users/proto/flutter/packages/flutter_tools/bin/tool_backend.bat windows-x64 Debug
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
@@ -8,7 +8,7 @@ endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
-^C:\USERS\ILUXA_3OXWD82\DEV\PROJECTS\MY_TO_DO_LIST\BUILD\WINDOWS\X64\CMAKEFILES\E68224ED0EA61828F7CCFEEBC24A3D05\FLUTTER_ASSEMBLE.RULE
+^C:\USERS\PROTO\DEV\PROJECTS\MY-TO-DO-LIST\BUILD\WINDOWS\X64\CMAKEFILES\CDEA76F06BE67A795E705B985F3A3EEF\FLUTTER_ASSEMBLE.RULE
 setlocal
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
@@ -16,9 +16,9 @@ endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
-^C:\USERS\ILUXA_3OXWD82\DEV\PROJECTS\MY_TO_DO_LIST\WINDOWS\FLUTTER\CMAKELISTS.TXT
+^C:\USERS\PROTO\DEV\PROJECTS\MY-TO-DO-LIST\WINDOWS\FLUTTER\CMAKELISTS.TXT
 setlocal
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/iluxa_3oxwd82/dev/Projects/my_to_do_list/windows -BC:/Users/iluxa_3oxwd82/dev/Projects/my_to_do_list/build/windows/x64 --check-stamp-file C:/Users/iluxa_3oxwd82/dev/Projects/my_to_do_list/build/windows/x64/flutter/CMakeFiles/generate.stamp
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/proto/dev/Projects/My-To-Do-List/windows -BC:/Users/proto/dev/Projects/My-To-Do-List/build/windows/x64 --check-stamp-file C:/Users/proto/dev/Projects/My-To-Do-List/build/windows/x64/flutter/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone

@@ -1,6 +1,6 @@
-^C:\USERS\ILUXA_3OXWD82\DEV\PROJECTS\MY_TO_DO_LIST\WINDOWS\RUNNER\CMAKELISTS.TXT
+^C:\USERS\PROTO\DEV\PROJECTS\MY-TO-DO-LIST\WINDOWS\RUNNER\CMAKELISTS.TXT
 setlocal
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/iluxa_3oxwd82/dev/Projects/my_to_do_list/windows -BC:/Users/iluxa_3oxwd82/dev/Projects/my_to_do_list/build/windows/x64 --check-stamp-file C:/Users/iluxa_3oxwd82/dev/Projects/my_to_do_list/build/windows/x64/runner/CMakeFiles/generate.stamp
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/proto/dev/Projects/My-To-Do-List/windows -BC:/Users/proto/dev/Projects/My-To-Do-List/build/windows/x64 --check-stamp-file C:/Users/proto/dev/Projects/My-To-Do-List/build/windows/x64/runner/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
