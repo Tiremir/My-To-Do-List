@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:convert';
 
-void main() {
+void main() async {
+  //SharedPreferences prefs = await SharedPreferences.getInstance();
+  //prefs.clear();
   runApp(const MainApp());
 }
 
@@ -36,12 +40,41 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       items.add(Item(title: 'Item ${Item.counter + 1}', isChecked: false));
     });
+    _saveData();
   }
 
   void _removeItem(int index) {
     setState(() {
       items.removeAt(index);
     });
+    _saveData();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _loadData();
+  }
+
+  _loadData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? jsonString = prefs.getString('items');
+    if (jsonString != null) {
+      List<dynamic> jsonList = json.decode(jsonString);
+      items = jsonList.map((json) => Item.fromJson(json)).toList();
+      setState(() {});
+    }
+    int? jsonCounter = prefs.getInt('counter');
+    if (jsonCounter != null) {
+      Item.counter = jsonCounter;
+    }
+  }
+
+  _saveData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String jsonString = json.encode(items.map((obj) => obj.toJson()).toList());
+    await prefs.setString('items', jsonString);
+    await prefs.setInt('counter', Item.counter);
   }
 
   @override
@@ -117,4 +150,18 @@ class Item {
   static int counter = 0;
   String title;
   bool isChecked;
+
+  Map<String, dynamic> toJson() {
+    return {
+      'title': title,
+      'isChecked': isChecked,
+    };
+  }
+
+  factory Item.fromJson(Map<String, dynamic> json) {
+    return Item(
+      title: json['title'],
+      isChecked: json['isChecked'],
+    );
+  }
 }
