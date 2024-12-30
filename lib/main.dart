@@ -36,9 +36,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   List<Item> items = [];
 
-  void _addItem() {
+  void _addItem(String title) {
     setState(() {
-      items.add(Item(title: 'Item ${Item.counter + 1}', isChecked: false));
+      items.add(Item(title: title, isChecked: false));
     });
     _saveData();
   }
@@ -50,13 +50,62 @@ class _MyHomePageState extends State<MyHomePage> {
     _saveData();
   }
 
+  void _showAddItemDialog() {
+    final TextEditingController controller = TextEditingController();
+    
+    showDialog(
+      context: context,
+      builder: (context) {
+        return StatefulBuilder(
+          builder: (BuildContext context, StateSetter setState) {
+            String? errorMessage;
+            if(controller.text.isEmpty) {
+              errorMessage = 'Пожалуйста, введите значение';
+            } else if(items.any((item) => item.title == controller.text)) {
+              errorMessage = 'Это значение уже существует';
+            } else {
+              errorMessage = null;
+            }
+
+            return AlertDialog(
+              title: const Text('Добавить объект'),
+              content: TextField(
+                controller: controller,
+                decoration: InputDecoration(hintText: 'Введите название', errorText: errorMessage),
+                autofocus: true,
+                onChanged: (value) => setState(() {}),
+              ),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    if(controller.text.isNotEmpty && items.every((item) => item.title != controller.text)) {
+                      _addItem(controller.text);
+                      Navigator.of(context).pop();
+                    }
+                  },
+                  child: const Text('Добавить'),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text('Отмена'),
+                ),
+              ],
+            );
+          },
+        );
+      }
+    );
+  }
+
   @override
   void initState() {
     super.initState();
     _loadData();
   }
 
-  _loadData() async {
+  void _loadData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? jsonString = prefs.getString('items');
     if (jsonString != null) {
@@ -64,17 +113,12 @@ class _MyHomePageState extends State<MyHomePage> {
       items = jsonList.map((json) => Item.fromJson(json)).toList();
       setState(() {});
     }
-    int? jsonCounter = prefs.getInt('counter');
-    if (jsonCounter != null) {
-      Item.counter = jsonCounter;
-    }
   }
 
-  _saveData() async {
+  void _saveData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    String jsonString = json.encode(items.map((obj) => obj.toJson()).toList());
+    String jsonString = json.encode(items.map((item) => item.toJson()).toList());
     await prefs.setString('items', jsonString);
-    await prefs.setInt('counter', Item.counter);
   }
 
   @override
@@ -119,6 +163,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   setState(() {
                     items[index].isChecked = value!;
                   });
+                  _saveData();
                 }
               ),
             );
@@ -126,7 +171,7 @@ class _MyHomePageState extends State<MyHomePage> {
           onReorder: (int oldIndex, int newIndex) {
             setState(() {
               if (oldIndex < newIndex) {
-                newIndex -= 1;
+                newIndex--;
               }
               final Item item = items.removeAt(oldIndex);
               items.insert(newIndex, item);
@@ -135,7 +180,7 @@ class _MyHomePageState extends State<MyHomePage> {
         )
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _addItem,
+        onPressed: _showAddItemDialog,
         child: const Icon(Icons.add)
       ),
     );
@@ -143,11 +188,8 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class Item {
-  Item({required this.title, required this.isChecked}) {
-    counter++;
-  }
+  Item({required this.title, required this.isChecked});
 
-  static int counter = 0;
   String title;
   bool isChecked;
 
