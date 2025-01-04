@@ -50,6 +50,13 @@ class _MyHomePageState extends State<MyHomePage> {
     _saveData();
   }
 
+  void _renameItem(int index, String newTitle) {
+    setState(() {
+      items[index].title = newTitle;
+    });
+    _saveData();
+  }
+
   void _showAddItemDialog() {
     final TextEditingController controller = TextEditingController();
     
@@ -73,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 controller: controller,
                 decoration: InputDecoration(hintText: 'Введите название', errorText: errorMessage),
                 autofocus: true,
-                onChanged: (value) => setState(() {}),
+                onChanged: (value) => setState(() {})
               ),
               actions: [
                 TextButton(
@@ -84,6 +91,53 @@ class _MyHomePageState extends State<MyHomePage> {
                     }
                   },
                   child: const Text('Добавить'),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text('Отмена'),
+                ),
+              ],
+            );
+          },
+        );
+      }
+    );
+  }
+
+  void _showRenameItemDialog(int index) {
+    final TextEditingController controller = TextEditingController();
+    showDialog(
+      context: context,
+      builder: (context) {
+        return StatefulBuilder(
+          builder: (BuildContext context, StateSetter setState) {
+            String? errorMessage;
+            if(controller.text.isEmpty) {
+              errorMessage = 'Пожалуйста, введите значение';
+            } else if(items.any((item) => item.title == controller.text)) {
+              errorMessage = 'Это значение уже существует';
+            } else {
+              errorMessage = null;
+            }
+            return AlertDialog(
+              title: const Text('Переименование объекта'),
+              content: TextField(
+                controller: controller,
+                decoration: InputDecoration(hintText: 'Введите название', errorText: errorMessage),
+                autofocus: true,
+                onChanged: (value) => setState(() {})
+              ),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    if(controller.text.isNotEmpty && items.every((item) => item.title != controller.text)) {
+                      _renameItem(index, controller.text);
+                      Navigator.of(context).pop();
+                    }
+                  },
+                  child: const Text('Переименовать'),
                 ),
                 TextButton(
                   onPressed: () {
@@ -155,16 +209,19 @@ class _MyHomePageState extends State<MyHomePage> {
                 );
                 _removeItem(index);
               },
-              child: CheckboxListTile(
-                key: Key(items[index].title),
-                title: Text(items[index].title),
-                value: items[index].isChecked,
-                onChanged: (value) {
-                  setState(() {
-                    items[index].isChecked = value!;
-                  });
-                  _saveData();
-                }
+              child: GestureDetector(
+                onLongPress: () => _showRenameItemDialog(index),
+                child: CheckboxListTile(
+                  key: Key(items[index].title),
+                  title: Text(items[index].title),
+                  value: items[index].isChecked,
+                  onChanged: (value) {
+                    setState(() {
+                      items[index].isChecked = value!;
+                    });
+                    _saveData();
+                  }
+                ),
               ),
             );
           },
