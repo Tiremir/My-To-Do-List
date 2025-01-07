@@ -3,30 +3,56 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 
 void main() async {
-  //SharedPreferences prefs = await SharedPreferences.getInstance();
-  //prefs.clear();
   runApp(const MainApp());
 }
 
-class MainApp extends StatelessWidget {
+class MainApp extends StatefulWidget {
   const MainApp({super.key});
+
+  @override
+  State<MainApp> createState() => _MainAppState();
+}
+
+class _MainAppState extends State<MainApp> {
+
+  bool _isDarkTheme = false;
+
+  void _toggleTheme() async {
+    setState(() {
+      _isDarkTheme = !_isDarkTheme;
+    });
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('Is Dark Theme', _isDarkTheme);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    loadTheme();
+  }
+
+  void loadTheme() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    if(prefs.getBool('Is Dark Theme') != null) _isDarkTheme = prefs.getBool('Is Dark Theme')!;
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: MaterialApp(
         title: 'My To-Do List',
-        theme: ThemeData(
-          colorSchemeSeed: Colors.amber
-        ),
-        home: const MyHomePage(),
+        theme: _isDarkTheme ? ThemeData(colorSchemeSeed: Colors.amber, brightness: Brightness.dark) : ThemeData(colorSchemeSeed: Colors.amber, brightness: Brightness.light),
+        home: MyHomePage(toggleTheme: _toggleTheme),
       ),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+  const MyHomePage({super.key, required this.toggleTheme});
+
+  final VoidCallback toggleTheme;
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -35,6 +61,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
   List<Item> items = [];
+  List<int> selectedItems = [];
 
   void _addItem(String title) {
     setState(() {
@@ -43,16 +70,27 @@ class _MyHomePageState extends State<MyHomePage> {
     _saveData();
   }
 
-  void _removeItem(int index) {
+  void _renameItem(int index, String newTitle) {
     setState(() {
-      items.removeAt(index);
+      items[index].title = newTitle;
     });
     _saveData();
   }
 
-  void _renameItem(int index, String newTitle) {
+  void _toggleSelection(int index) {
     setState(() {
-      items[index].title = newTitle;
+      if (selectedItems.contains(index)) {
+        selectedItems.remove(index);
+      } else {
+        selectedItems.add(index);
+      }
+    });
+  }
+
+  void deleteSelectedItems() {
+    setState(() {
+      items.removeWhere((item) => selectedItems.contains(items.indexOf(item)));
+      selectedItems.clear();
     });
     _saveData();
   }
@@ -181,46 +219,39 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: const Text('My To-Do List'),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-      ),
-      drawer: Drawer(
-        child: ListView(
-          children: const [
-            ListTile(
-              title: Text('Элемент'),
-            ),
-            ListTile(
-              title: Text('Элемент'),
-            ),
-            ListTile(
-              title: Text('Элемент'),
-            ),
-          ],
-        )
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.delete),
+            onPressed: selectedItems.isEmpty ? null : deleteSelectedItems,
+          ),
+          IconButton(
+            onPressed: widget.toggleTheme,
+            icon: const Icon(Icons.brightness_4)
+          )
+        ],
       ),
       body: Center(
         child: ReorderableListView.builder(
           itemCount: items.length,
           itemBuilder: (context, index) {
-            return Dismissible(
+            return GestureDetector(
               key: Key(items[index].title),
-              onDismissed: (direction) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('${items[index].title} удален')),
-                );
-                _removeItem(index);
-              },
-              child: GestureDetector(
-                onLongPress: () => _showRenameItemDialog(index),
-                child: CheckboxListTile(
+              onTap: selectedItems.isEmpty ? () => _showRenameItemDialog(index) : () => _toggleSelection(index),
+              onLongPress: () => _toggleSelection(index),
+              child: Container(
+                color: selectedItems.contains(index) ? Theme.of(context).focusColor : null,
+                child: ListTile(
                   key: Key(items[index].title),
                   title: Text(items[index].title),
-                  value: items[index].isChecked,
-                  onChanged: (value) {
-                    setState(() {
-                      items[index].isChecked = value!;
-                    });
-                    _saveData();
-                  }
+                  leading: Checkbox(
+                    value: items[index].isChecked,
+                    onChanged: (value) {
+                      setState(() {
+                        items[index].isChecked = value!;
+                      });
+                      _saveData();
+                    }
+                  ),
                 ),
               ),
             );
