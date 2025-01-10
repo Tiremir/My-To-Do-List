@@ -87,7 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  void deleteSelectedItems() {
+  void _deleteSelectedItems() {
     setState(() {
       items.removeWhere((item) => selectedItems.contains(items.indexOf(item)));
       selectedItems.clear();
@@ -220,9 +220,20 @@ class _MyHomePageState extends State<MyHomePage> {
         title: const Text('My To-Do List'),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         actions: [
-          IconButton(
-            icon: const Icon(Icons.delete),
-            onPressed: selectedItems.isEmpty ? null : deleteSelectedItems,
+          Visibility(
+            visible: selectedItems.isNotEmpty ? true : false,
+            child: Row(
+              children: [
+                IconButton(
+                  onPressed: selectedItems.isNotEmpty ? _deleteSelectedItems : null,
+                  icon: const Icon(Icons.delete)
+                ),
+                IconButton(
+                  onPressed: selectedItems.length != items.length ? () => setState(() {selectedItems = List.generate(items.length, (index) => index);}) : () => setState(() {selectedItems = [];}),
+                  icon: const Icon(Icons.checklist)
+                )
+              ],
+            )
           ),
           IconButton(
             onPressed: widget.toggleTheme,
