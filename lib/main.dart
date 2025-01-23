@@ -15,14 +15,14 @@ class MainApp extends StatefulWidget {
 
 class _MainAppState extends State<MainApp> {
 
-  bool _isDarkTheme = false;
+  bool? _isDarkTheme;
 
   void _toggleTheme() async {
     setState(() {
-      _isDarkTheme = !_isDarkTheme;
+      _isDarkTheme = !_isDarkTheme!;
     });
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setBool('Is Dark Theme', _isDarkTheme);
+    await prefs.setBool('Is Dark Theme', _isDarkTheme!);
   }
 
   @override
@@ -33,16 +33,20 @@ class _MainAppState extends State<MainApp> {
 
   void loadTheme() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    if(prefs.getBool('Is Dark Theme') != null) _isDarkTheme = prefs.getBool('Is Dark Theme')!;
-    setState(() {});
+    setState( () {
+      _isDarkTheme = prefs.getBool('Is Dark Theme') ?? false;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
+    if(_isDarkTheme == null) {
+      return Container();
+    }
     return SafeArea(
       child: MaterialApp(
         title: 'My To-Do List',
-        theme: _isDarkTheme ? ThemeData(colorSchemeSeed: Colors.amber, brightness: Brightness.dark) : ThemeData(colorSchemeSeed: Colors.amber, brightness: Brightness.light),
+        theme: ThemeData(colorSchemeSeed: Colors.amber, brightness: _isDarkTheme! ? Brightness.dark : Brightness.light),
         home: MyHomePage(toggleTheme: _toggleTheme),
       ),
     );
@@ -61,7 +65,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
   List<Item> items = [];
-  List<int> selectedItems = [];
 
   void _addItem(String title) {
     setState(() {
@@ -79,18 +82,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _toggleSelection(int index) {
     setState(() {
-      if (selectedItems.contains(index)) {
-        selectedItems.remove(index);
-      } else {
-        selectedItems.add(index);
-      }
+      items[index].isSelected = !items[index].isSelected;
     });
   }
 
   void _deleteSelectedItems() {
     setState(() {
-      items.removeWhere((item) => selectedItems.contains(items.indexOf(item)));
-      selectedItems.clear();
+      items.removeWhere((item) => item.isSelected);
     });
     _saveData();
   }
@@ -220,20 +218,15 @@ class _MyHomePageState extends State<MyHomePage> {
         title: const Text('My To-Do List'),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         actions: [
-          Visibility(
-            visible: selectedItems.isNotEmpty ? true : false,
-            child: Row(
-              children: [
-                IconButton(
-                  onPressed: selectedItems.isNotEmpty ? _deleteSelectedItems : null,
-                  icon: const Icon(Icons.delete)
-                ),
-                IconButton(
-                  onPressed: selectedItems.length != items.length ? () => setState(() {selectedItems = List.generate(items.length, (index) => index);}) : () => setState(() {selectedItems = [];}),
-                  icon: const Icon(Icons.checklist)
-                )
-              ],
-            )
+          if(items.any((item) => item.isSelected)) IconButton(
+            onPressed: items.every((item) => item.isSelected) ?
+              () => setState(() {for (var item in items) {item.isSelected = false;}})
+              : () => setState(() {for (var item in items) {item.isSelected = true;}}),
+            icon: const Icon(Icons.checklist)
+          ),
+          if(items.any((item) => item.isSelected)) IconButton(
+            onPressed: _deleteSelectedItems,
+            icon: const Icon(Icons.delete)
           ),
           IconButton(
             onPressed: widget.toggleTheme,
@@ -247,10 +240,14 @@ class _MyHomePageState extends State<MyHomePage> {
           itemBuilder: (context, index) {
             return GestureDetector(
               key: Key(items[index].title),
-              onTap: selectedItems.isEmpty ? () => _showRenameItemDialog(index) : () => _toggleSelection(index),
-              onLongPress: () => _toggleSelection(index),
+              onTap: items.every((item) => !item.isSelected) ?
+                () => _showRenameItemDialog(index)
+                : () => _toggleSelection(index),
+              onLongPress: items.every((item) => !item.isSelected) ?
+                () => _toggleSelection(index)
+                : null,
               child: Container(
-                color: selectedItems.contains(index) ? Theme.of(context).focusColor : null,
+                color: items[index].isSelected ? Theme.of(context).focusColor : null,
                 child: ListTile(
                   key: Key(items[index].title),
                   title: Text(items[index].title),
@@ -263,6 +260,12 @@ class _MyHomePageState extends State<MyHomePage> {
                       _saveData();
                     }
                   ),
+                  onTap: items.every((item) => !item.isSelected) ?
+                    () => _showRenameItemDialog(index)
+                    : () => _toggleSelection(index),
+                  onLongPress: items.every((item) => !item.isSelected) ?
+                    () => _toggleSelection(index)
+                    : null,
                 ),
               ),
             );
@@ -291,6 +294,7 @@ class Item {
 
   String title;
   bool isChecked;
+  bool isSelected = false;
 
   Map<String, dynamic> toJson() {
     return {
