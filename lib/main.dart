@@ -17,10 +17,13 @@ class _MainAppState extends State<MainApp> {
 
   bool? _isDarkTheme;
 
+  void loadTheme() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState( () => _isDarkTheme = prefs.getBool('Is Dark Theme') ?? false);
+  }
+
   void _toggleTheme() async {
-    setState(() {
-      _isDarkTheme = !_isDarkTheme!;
-    });
+    setState(() => _isDarkTheme = !_isDarkTheme!);
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setBool('Is Dark Theme', _isDarkTheme!);
   }
@@ -29,13 +32,6 @@ class _MainAppState extends State<MainApp> {
   void initState() {
     super.initState();
     loadTheme();
-  }
-
-  void loadTheme() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    setState( () {
-      _isDarkTheme = prefs.getBool('Is Dark Theme') ?? false;
-    });
   }
 
   @override
@@ -66,135 +62,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   List<Item> items = [];
 
-  void _addItem(String title) {
-    setState(() {
-      items.add(Item(title: title, isChecked: false));
-    });
-    _saveData();
-  }
-
-  void _renameItem(int index, String newTitle) {
-    setState(() {
-      items[index].title = newTitle;
-    });
-    _saveData();
-  }
-
-  void _toggleSelection(int index) {
-    setState(() {
-      items[index].isSelected = !items[index].isSelected;
-    });
-  }
-
-  void _deleteSelectedItems() {
-    setState(() {
-      items.removeWhere((item) => item.isSelected);
-    });
-    _saveData();
-  }
-
-  void _showAddItemDialog() {
-    final TextEditingController controller = TextEditingController();
-    
-    showDialog(
-      context: context,
-      builder: (context) {
-        return StatefulBuilder(
-          builder: (BuildContext context, StateSetter setState) {
-            String? errorMessage;
-            if(controller.text.isEmpty) {
-              errorMessage = 'Пожалуйста, введите значение';
-            } else if(items.any((item) => item.title == controller.text)) {
-              errorMessage = 'Это значение уже существует';
-            } else {
-              errorMessage = null;
-            }
-
-            return AlertDialog(
-              title: const Text('Добавить объект'),
-              content: TextField(
-                controller: controller,
-                decoration: InputDecoration(hintText: 'Введите название', errorText: errorMessage),
-                autofocus: true,
-                onChanged: (value) => setState(() {})
-              ),
-              actions: [
-                TextButton(
-                  onPressed: () {
-                    if(controller.text.isNotEmpty && items.every((item) => item.title != controller.text)) {
-                      _addItem(controller.text);
-                      Navigator.of(context).pop();
-                    }
-                  },
-                  child: const Text('Добавить'),
-                ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: const Text('Отмена'),
-                ),
-              ],
-            );
-          },
-        );
-      }
-    );
-  }
-
-  void _showRenameItemDialog(int index) {
-    final TextEditingController controller = TextEditingController();
-    showDialog(
-      context: context,
-      builder: (context) {
-        return StatefulBuilder(
-          builder: (BuildContext context, StateSetter setState) {
-            String? errorMessage;
-            if(controller.text.isEmpty) {
-              errorMessage = 'Пожалуйста, введите значение';
-            } else if(items.any((item) => item.title == controller.text)) {
-              errorMessage = 'Это значение уже существует';
-            } else {
-              errorMessage = null;
-            }
-            return AlertDialog(
-              title: const Text('Переименование объекта'),
-              content: TextField(
-                controller: controller,
-                decoration: InputDecoration(hintText: 'Введите название', errorText: errorMessage),
-                autofocus: true,
-                onChanged: (value) => setState(() {})
-              ),
-              actions: [
-                TextButton(
-                  onPressed: () {
-                    if(controller.text.isNotEmpty && items.every((item) => item.title != controller.text)) {
-                      _renameItem(index, controller.text);
-                      Navigator.of(context).pop();
-                    }
-                  },
-                  child: const Text('Переименовать'),
-                ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: const Text('Отмена'),
-                ),
-              ],
-            );
-          },
-        );
-      }
-    );
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _loadData();
-  }
-
   void _loadData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? jsonString = prefs.getString('items');
@@ -211,6 +78,82 @@ class _MyHomePageState extends State<MyHomePage> {
     await prefs.setString('items', jsonString);
   }
 
+  void _toggleSelection(int index) {
+    setState(() => items[index].isSelected = !items[index].isSelected);
+  }
+
+  void _showAddItemDialog() {
+    final TextEditingController controller = TextEditingController();
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Добавить задачу'),
+          content: TextField(
+            controller: controller,
+            decoration: const InputDecoration(hintText: 'Введите название'),
+            autofocus: true,
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                if(controller.text.isNotEmpty) {
+                  setState(() => items.add(Item(title: controller.text, isChecked: false)));
+                  _saveData();
+                  Navigator.of(context).pop();
+                }
+              },
+              child: const Text('Добавить'),
+            ),
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: const Text('Отмена'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _showRenameItemDialog(int index) {
+    final TextEditingController controller = TextEditingController();
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Переименование задачи'),
+          content: TextField(
+            controller: controller,
+            decoration: const InputDecoration(hintText: 'Введите название'),
+            autofocus: true,
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                if(controller.text.isNotEmpty) {
+                  setState(() => items[index].title = controller.text);
+                  _saveData();
+                  Navigator.of(context).pop();
+                }
+              },
+              child: const Text('Переименовать'),
+            ),
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: const Text('Отмена'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _loadData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -225,7 +168,10 @@ class _MyHomePageState extends State<MyHomePage> {
             icon: const Icon(Icons.checklist)
           ),
           if(items.any((item) => item.isSelected)) IconButton(
-            onPressed: _deleteSelectedItems,
+            onPressed: () {
+              setState(() => items.removeWhere((item) => item.isSelected));
+              _saveData();
+            },
             icon: const Icon(Icons.delete)
           ),
           IconButton(
@@ -238,35 +184,29 @@ class _MyHomePageState extends State<MyHomePage> {
         child: ReorderableListView.builder(
           itemCount: items.length,
           itemBuilder: (context, index) {
-            return GestureDetector(
-              key: Key(items[index].title),
-              onTap: items.every((item) => !item.isSelected) ?
-                () => _showRenameItemDialog(index)
-                : () => _toggleSelection(index),
-              onLongPress: items.every((item) => !item.isSelected) ?
-                () => _toggleSelection(index)
-                : null,
-              child: Container(
-                color: items[index].isSelected ? Theme.of(context).focusColor : null,
-                child: ListTile(
-                  key: Key(items[index].title),
-                  title: Text(items[index].title),
-                  leading: Checkbox(
-                    value: items[index].isChecked,
-                    onChanged: (value) {
-                      setState(() {
-                        items[index].isChecked = value!;
-                      });
-                      _saveData();
-                    }
-                  ),
-                  onTap: items.every((item) => !item.isSelected) ?
-                    () => _showRenameItemDialog(index)
-                    : () => _toggleSelection(index),
-                  onLongPress: items.every((item) => !item.isSelected) ?
-                    () => _toggleSelection(index)
-                    : null,
+            return Container(
+              key: ValueKey(index),
+              color: items[index].isSelected ? Theme.of(context).focusColor : null,
+              child: ListTile(
+                title: Text(items[index].title),
+                leading: Checkbox(
+                  value: items[index].isChecked,
+                  onChanged: (value) {
+                    setState(() {
+                      items[index].isChecked = value!;
+                    });
+                    _saveData();
+                  }
                 ),
+                trailing: items.any((item) => item.isSelected) &&
+                  [TargetPlatform.iOS, TargetPlatform.android, TargetPlatform.fuchsia].contains(Theme.of(context).platform) ?
+                  const Icon(Icons.drag_handle) : null,
+                onTap: items.every((item) => !item.isSelected) ?
+                  () => _showRenameItemDialog(index)
+                  : () => _toggleSelection(index),
+                onLongPress: items.every((item) => !item.isSelected) ?
+                  () => _toggleSelection(index)
+                  : null,
               ),
             );
           },
